@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow Rewards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">TF</span>
+      <span>TaskFlow</span>
+    </div>
+
+    <nav>
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#surveys">Surveys</a>
+      <a href="#wallet">Wallet</a>
+      <a href="#transactions">Transactions</a>
+      <a href="#profile">Profile</a>
+    </nav>
+
+    <div class="side-note">
+      <strong>Need help?</strong>
+      <p>Contact support from your profile.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">REWARDS PLATFORM</p>
+        <h1>
+          Welcome back,
+          <span id="userName">Jesse</span> 👋
+        </h1>
+      </div>
+
+      <button class="avatar" id="profileBtn">J</button>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="hero">
+
+      <div>
+        <p class="eyebrow">YOUR CURRENT BALANCE</p>
+
+        <div class="balance">
+          KES <span id="balance">1,250</span>
+        </div>
+
+        <p class="muted">
+          Complete eligible surveys and tasks to earn rewards.
+        </p>
+      </div>
+
+      <button
+        class="primary"
+        onclick="showSection('surveys')">
+        Find surveys
+      </button>
+
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="stats">
+
+      <div class="stat">
+        <span>Available surveys</span>
+        <strong id="surveyCount">6</strong>
+      </div>
+
+      <div class="stat">
+        <span>Completed</span>
+        <strong id="completed">12</strong>
+      </div>
+
+      <div class="stat">
+        <span>Total earned</span>
+        <strong>KES 3,850</strong>
+      </div>
+
+      <div class="stat">
+        <span>Pending withdrawal</span>
+        <strong>KES 0</strong>
+      </div>
+
+    </section>
+
+    <!-- SURVEYS -->
+    <section id="surveys" class="content-section">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">EARN REWARDS</p>
+          <h2>Available surveys</h2>
+        </div>
+
+        <span class="pill">6 available</span>
+
+      </div>
+
+      <div id="surveyList" class="survey-grid"></div>
+
+    </section>
+
+    <!-- WALLET -->
+    <section id="wallet" class="content-section">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">WALLET</p>
+          <h2>Payments & withdrawals</h2>
+        </div>
+
+      </div>
+
+      <div class="wallet-grid">
+
+        <div class="payment-card">
+
+          <span class="icon">₿</span>
+
+          <h3>Business payment destination</h3>
+
+          <p class="muted">
+            For legitimate platform payments, use the
+            disclosed business number below.
+          </p>
+
+          <div class="payment-number">
+            Pochi la Biashara
+            <br>
+
+            <strong>0115422310</strong>
+          </div>
+
+          <p class="warning">
+            Only make a payment when the reason, amount
+            and terms are clearly shown to you.
+            TaskFlow will never ask for your M-Pesa PIN.
+          </p>
+
+        </div>
+
+        <div class="payment-card">
+
+          <span class="icon">↗</span>
+
+          <h3>Request withdrawal</h3>
+
+          <label>Amount (KES)</label>
+
+          <input
+            id="withdrawAmount"
+            type="number"
+            min="50"
+            placeholder="e.g. 500">
+
+          <button
+            class="primary full"
+            onclick="requestWithdrawal()">
+            Request withdrawal
+          </button>
+
+          <small>
+            Minimum withdrawal: KES 50.
+            Requests are subject to verification
+            and the published terms.
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TRANSACTIONS -->
+    <section id="transactions" class="content-section">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">ACTIVITY</p>
+          <h2>Recent transactions</h2>
+        </div>
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="transactionsBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="content-section profile">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">ACCOUNT</p>
+          <h2>Profile</h2>
+        </div>
+
+      </div>
+
+      <div class="profile-card">
+
+        <div class="avatar large">J</div>
+
+        <div>
+          <h3 id="profileName">Jesse</h3>
+          <p class="muted">Member account</p>
+        </div>
+
+        <button
+          class="secondary"
+          onclick="alert('Profile editing can be connected to your backend.')">
+          Edit profile
+        </button>
+
+      </div>
+
+      <div class="legal">
+
+        <h3>Important payment notice</h3>
+
+        <p>
+          Payments must be voluntary and based on clearly
+          disclosed services or fees. Do not represent a
+          payment as a required "unlock", "tax", or
+          "verification" charge unless that fee genuinely
+          exists and is disclosed before payment.
+        </p>
+
+      </div>
+
+    </section>
+
+    <footer>
+      © 2026 TaskFlow Rewards · Transparent rewards platform ·
+      <span>Support</span>
+    </footer>
+
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
